@@ -1,0 +1,41 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'templates/header.html'" data-ng-controller="headerCtrl as hctrl"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'templates/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+
+    <div class="container" data-ng-controller="tableCtrl as tctrl">
+        <div class="block-header">
+            <h2>Product List</h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2></h2>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table ng-table="tctrl.tableEdit" class="table table-striped table-vmiddle">
+                        <tr ng-repeat="(id, data) in $data">
+                            <td data-title="'ID'">
+                                <span>{{ id }}</span>
+                            </td>
+                            <td data-title="'Name'">
+                                <span>{{ data.name }}</span>
+                            </td>
+                            <td data-title="'Category'">
+                                <span>{{ data.category }}</span>
+                            </td>
+                            <td data-title="'Actions'">
+                                <button type="button" class="btn btn-default" ng-click="product_detail(id)"><i class="zmdi zmdi-edit"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

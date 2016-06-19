@@ -1,0 +1,37 @@
+<div class="sidebar-inner c-overflow">
+    <div class="profile-menu">
+        <a href="" toggle-submenu>
+            <div class="profile-pic">
+                <img src="img/profile-pics/1.jpg" alt="">
+            </div>
+
+            <div class="profile-info">
+                {{ $root.user.role }} - {{ $root.user.username }}
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </a>
+
+        <ul class="main-menu" ng-click="logout()">
+            <li>
+                <a href=""><i class="zmdi zmdi-time-restore" ></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="main-menu">
+
+        <!--<li data-ui-sref-active="active">
+            <a data-ui-sref="tables.subscribe-manager" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-home"></i> Subscriber Management</a>
+        </li>
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="tables.pin-manager" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-format-underlined"></i> Calling Card PIN Management</a>
+        </li>-->
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Account</a>
+        </li>
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="productList" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-view-list zmdi-hc-fw"></i> Product List</a>
+        </li>
+
+    </ul>
+</div>

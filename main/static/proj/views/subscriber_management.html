@@ -1,0 +1,102 @@
+<div class="container" data-ng-controller="tableCtrl as tctrl">
+
+<div class="card">
+
+    <div class="card-header">
+        <h2>Subscriber Management</h2>
+    </div>
+    <div align="right" style="margin:20px; margin-right: 10%">
+        <button type="button" class="btn btn-primary btn-sm m-t-10 waves-effect" ng-click="open()">Create</button>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table ng-table="tableFilter" class="table table-striped table-vmiddle" show-filter="true">
+                <tr ng-repeat="w in data">
+                    <td data-title="'Phone'" filter="{ 'phone': 'text' }" sortable="'phone'">
+                        {{ w.phone }}
+                    </td>
+                    <td data-title="'Email'" filter="{ 'email': 'text' }" sortable="'email'">
+                        {{ w.email }}
+                    </td>
+                    <td data-title="'Registered On'" filter="{ 'created_on': 'text' }" sortable="'created_on'">
+                        {{ w.created_on }}
+                    </td>
+                    <td data-title="'Last Paid'">
+
+                    </td>
+                    <td data-title="'Balance'" filter="{ 'balance': 'text' }" sortable="'balance'">
+                        {{ w.balance }}
+                    </td>
+                     <td data-title="'Total Payment'">
+
+                    </td>
+                    <td data-title="'Pin'" filter="{ 'pin': 'text' }" sortable="'pin'">
+                        {{ w.pin }}
+                    </td>
+                    <td data-title="'Status'" filter="{ 'status': 'text' }" sortable="'status'">
+                        <div ng-if="w.status == 1">Active</div>
+                        <div ng-if="w.status == 0">Inactive</div>
+                        <div ng-if="w.status == 2">No Balance</div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+    <script type="text/ng-template" id="myModalContent.html">
+
+        <form name="createSubscriber">
+        <div class="modal-header">
+            <h4 class="modal-title">Create Subscriber</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                        <div class="fg-line">
+                                <input type="text" class="form-control" placeholder="User Name" ng-model="subscriber.name" ng-required="true">
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-local-phone"></i></span>
+                        <div class="fg-line">
+                            <input type="text" class="form-control" placeholder="Phone Number" ng-model="subscriber.phone" ng-required="true">
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                        <div class="fg-line">
+                            <input type="email" class="form-control" placeholder="Email Address" ng-model="subscriber.email" ng-required="true">
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
+                        <div class="fg-line">
+                            <input type="password" class="form-control" placeholder="Password" ng-model="subscriber.password" ng-required="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-link" ng-click="ok('createSubscriber')">OK</button>
+            <button class="btn btn-link" ng-click="cancel()">Cancel</button>
+        </div>
+
+        </form>
+    </script>
+
+</div>
