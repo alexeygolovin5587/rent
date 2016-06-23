@@ -1,0 +1,52 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'templates/header.html'" data-ng-controller="headerCtrl as hctrl"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'templates/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+    <section id="content">
+        <div class="container">
+            <div class="block-header">
+                <h2>Sale</h2>
+            </div>
+
+            <!-- TABS -->
+            <div class="card">
+                <div class="card-header">
+                    <h2></h2>
+                </div>
+
+                <div class="card-body card-padding" data-ng-controller="productDetail as pctrl" id="profile-main">
+                    <form class="pmbb-edit" data-ng-submit="pctrl.submit_product(pctrl.spec)">
+                        <div class="pmb-block">
+                            <div class="pmbb-header"><h2>Serivces and Prices</h2>
+                                </div>
+                            <div class="pmbb-body p-l-30">
+                                <div class="input-block" ng-repeat="n in pctrl.repeat">
+                                    <div class="col-xs-5">
+                                        <div class="fg-line">
+                                            <input type="text" class="form-control" placeholder="service">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-5">
+                                        <div class="fg-line">
+                                            <input type="number" class="form-control" placeholder="price">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a class="btn btn-warning btn-xs btn-sm" ng-click="pctrl.add_service_input()">Add</a>
+                            </div>
+                        </div>
+
+                        <div class="p-l-30" style="float: right; margin: 20px 100px 20px 20px;">
+                            <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                            <button class="btn btn-link btn-sm" data-ng-click="" >Cancel</button>
+                        </div>
+                            <div style="clear: both;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

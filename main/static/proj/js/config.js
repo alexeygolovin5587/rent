@@ -20,41 +20,10 @@ materialAdmin
             url: '/tables',
             templateUrl: 'views/common.html'
         })
-        .state ('tables.subscribe-manager', {
-            url: '/subscribe_manager',
-            templateUrl: 'views/subscriber_management.html',
 
-            resolve: {
-
-                loadPlugin: function($ocLazyLoad, $location, $rootScope) {
-
-                    //if($rootScope.is_authenticated == false || $rootScope.role != "operator")
-                    //    $location.path("/login")
-                    //else
-                        return $ocLazyLoad.load ([])
-                }
-
-            }
-        })
-        .state ('tables.pin-manager', {
-            url: '/pin_manager',
-            templateUrl: 'views/pin_management.html',
-
-            resolve: {
-
-                loadPlugin: function($ocLazyLoad, $location, $rootScope) {
-
-                    if($rootScope.is_authenticated == false || $rootScope.role != "operator")
-                        $location.path("/login")
-                    else
-                        return $ocLazyLoad.load ([])
-                }
-
-            }
-        })
         .state ('home', {
             url: '/home',
-            templateUrl: 'views/home.html',
+            templateUrl: 'views/account.html',
             resolve: {
 
                 loadPlugin: function($ocLazyLoad, $location, $rootScope) {
@@ -89,7 +58,7 @@ materialAdmin
         })
         .state ('productList', {
             url: '/product-list',
-            templateUrl: 'views/product-list.html',
+            templateUrl: 'views/product_management.html',
             resolve: {
 
                 loadPlugin: function($ocLazyLoad) {
@@ -105,7 +74,7 @@ materialAdmin
         })
         .state ('productDetail', {
             url: '/product-detail:productID',
-            templateUrl: 'views/product-detail.html',
+            templateUrl: 'views/product_detail.html',
             controller: function($scope, $stateParams) {
                  $scope.productID = $stateParams.productID.substr(1, $stateParams.productID.length);
               },
@@ -146,6 +115,135 @@ materialAdmin
 
             }
         })
+        .state ('productRent', {
+            url: '/product-rent:productID',
+            templateUrl: 'views/product_rent.html',
+            controller: function($scope, $stateParams) {
+                 $scope.productID = $stateParams.productID.substr(1, $stateParams.productID.length);
+              },
+            resolve: {
+
+                loadPlugin: function($ocLazyLoad) {
+
+                    //if($rootScope.is_authenticated == false)
+                    //    $location.path("/login")
+                    //else
+
+                        return $ocLazyLoad.load ([{
+                                        name: 'css',
+                                        insertBefore: '#app-level',
+                                        files: [
+                                            'vendors/bower_components/nouislider/jquery.nouislider.css',
+                                            'vendors/farbtastic/farbtastic.css',
+                                            'vendors/bower_components/summernote/dist/summernote.css',
+                                            'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                                            'vendors/bower_components/chosen/chosen.min.css'
+                                        ]
+                                    },
+                                    {
+                                        name: 'vendors',
+                                        files: [
+                                            'vendors/input-mask/input-mask.min.js',
+                                            'vendors/bower_components/nouislider/jquery.nouislider.min.js',
+                                            'vendors/bower_components/moment/min/moment.min.js',
+                                            'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                                            'vendors/bower_components/summernote/dist/summernote.min.js',
+                                            'vendors/fileinput/fileinput.min.js',
+                                            'vendors/bower_components/chosen/chosen.jquery.js',
+                                            'vendors/bower_components/angular-chosen-localytics/chosen.js',
+                                            'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                        ]
+                                    }])
+                }
+
+            }
+        })
+        .state ('productSale', {
+            url: '/product-sale:productID',
+            templateUrl: 'views/product_sale.html',
+            controller: function($scope, $stateParams) {
+                 $scope.productID = $stateParams.productID.substr(1, $stateParams.productID.length);
+              },
+            resolve: {
+
+                loadPlugin: function($ocLazyLoad) {
+
+                    //if($rootScope.is_authenticated == false)
+                    //    $location.path("/login")
+                    //else
+
+                        return $ocLazyLoad.load ([{
+                                        name: 'css',
+                                        insertBefore: '#app-level',
+                                        files: [
+                                            'vendors/bower_components/nouislider/jquery.nouislider.css',
+                                            'vendors/farbtastic/farbtastic.css',
+                                            'vendors/bower_components/summernote/dist/summernote.css',
+                                            'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                                            'vendors/bower_components/chosen/chosen.min.css'
+                                        ]
+                                    },
+                                    {
+                                        name: 'vendors',
+                                        files: [
+                                            'vendors/input-mask/input-mask.min.js',
+                                            'vendors/bower_components/nouislider/jquery.nouislider.min.js',
+                                            'vendors/bower_components/moment/min/moment.min.js',
+                                            'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                                            'vendors/bower_components/summernote/dist/summernote.min.js',
+                                            'vendors/fileinput/fileinput.min.js',
+                                            'vendors/bower_components/chosen/chosen.jquery.js',
+                                            'vendors/bower_components/angular-chosen-localytics/chosen.js',
+                                            'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                        ]
+                                    }])
+                }
+
+            }
+        })
+        .state ('productService', {
+            url: '/product-service:productID',
+            templateUrl: 'views/product_service.html',
+            controller: function($scope, $stateParams) {
+                 $scope.productID = $stateParams.productID.substr(1, $stateParams.productID.length);
+              },
+            resolve: {
+
+                loadPlugin: function($ocLazyLoad) {
+
+                    //if($rootScope.is_authenticated == false)
+                    //    $location.path("/login")
+                    //else
+
+                        return $ocLazyLoad.load ([{
+                                    name: 'css',
+                                    insertBefore: '#app-level',
+                                    files: [
+                                        'vendors/bower_components/nouislider/jquery.nouislider.css',
+                                        'vendors/farbtastic/farbtastic.css',
+                                        'vendors/bower_components/summernote/dist/summernote.css',
+                                        'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                                        'vendors/bower_components/chosen/chosen.min.css'
+                                    ]
+                                },
+                                {
+                                    name: 'vendors',
+                                    files: [
+                                        'vendors/input-mask/input-mask.min.js',
+                                        'vendors/bower_components/nouislider/jquery.nouislider.min.js',
+                                        'vendors/bower_components/moment/min/moment.min.js',
+                                        'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                                        'vendors/bower_components/summernote/dist/summernote.min.js',
+                                        'vendors/fileinput/fileinput.min.js',
+                                        'vendors/bower_components/chosen/chosen.jquery.js',
+                                        'vendors/bower_components/angular-chosen-localytics/chosen.js',
+                                        'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                    ]
+                                }])
+                }
+
+            }
+        })
 
         .state('blank', {
             url: "/blank",
@@ -157,7 +255,6 @@ materialAdmin
                         $location.path("/login")
                 }
             }
-
         })
 
 

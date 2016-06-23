@@ -24,6 +24,18 @@ materialAdmin
         $scope.product_detail = function(id){
             $location.path("/product-detail:" + id)
         }
+
+        $scope.product_rent = function(id){
+            $location.path("/product-rent:" + id)
+        }
+
+        $scope.product_sale = function(id){
+            $location.path("/product-sale:" + id)
+        }
+
+        $scope.product_rent_service = function(id){
+            $location.path("/product-service:" + id)
+        }
     })
     /*.controller('tableCtrl', function($filter, $sce, ngTableParams, $http, $rootScope, $scope, $uibModal) {
         $scope.data = [];

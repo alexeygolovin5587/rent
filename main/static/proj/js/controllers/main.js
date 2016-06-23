@@ -271,10 +271,24 @@ materialAdmin
         }
 
     })
-    .controller('productDetail', function($scope, $rootScope){
+    .controller('productDetail', function($scope, $rootScope, $location){
+        // variable for sale section
         $scope.product = null
-
         this.spec = 0
+
+        // variable for rent section
+        $scope.shipping = null
+        this.pickuponly = 0
+
+        // variable for sale section
+        this.auction = 0
+        this.coupon = 0
+        this.buy = 0
+        this.shipping = 0
+        this.additional = 0
+
+        this.numberofinput = 1
+        this.repeat = [1,]
 
         if($rootScope.data[$scope.productID] != undefined)
             $scope.product = $rootScope.data[$scope.productID]
@@ -286,9 +300,69 @@ materialAdmin
                 this.spec = 0;
         }
 
-        this.submit_product = function(spec){
-            alert(spec)
+        this.select_shipping = function(){
+            if($scope.shipping == 2)
+                this.pickuponly = 1;
+            else
+                this.pickuponly = 0;
         }
+
+        this.showAddictional = function(){
+            if(this.additional == 0)
+                this.additional = 1;
+            else
+                this.additional = 0;
+        }
+
+        this.submit_product = function(spec){
+            $location.path("/product-list")
+        }
+
+        this.check_sale = function($event, type){
+            var checkbox = $event.target;
+            if(type == "auction")
+                this.auction = (checkbox.checked ? 1 : 0);
+            else if(type == "coupon")
+                this.coupon = (checkbox.checked ? 1 : 0);
+            else if(type == "buy")
+                this.buy = (checkbox.checked ? 1 : 0);
+            else if(type == "shipping")
+                this.shipping = (checkbox.checked ? 1 : 0);
+        }
+
+        this.add_service_input = function(spec){
+
+            this.numberofinput += 1
+            this.repeat.push(this.numberofinput)
+        }
+
+
+
+        $scope.today = function() {
+            $scope.dt = new Date();
+        };
+        $scope.today();
+
+
+        $scope.toggleMin = function() {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+
+        $scope.open = function($event, opened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope[opened] = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
 
     })
 

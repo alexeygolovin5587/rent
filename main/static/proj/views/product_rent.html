@@ -1,0 +1,162 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'templates/header.html'" data-ng-controller="headerCtrl as hctrl"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'templates/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+    <section id="content">
+        <div class="container">
+            <div class="block-header">
+                <h2>Rent</h2>
+            </div>
+
+            <!-- TABS -->
+            <div class="card">
+                <div class="card-header">
+                    <h2></h2>
+                </div>
+
+                <div class="card-body card-padding" data-ng-controller="productDetail as pctrl" id="profile-main">
+                    <form class="pmbb-edit" data-ng-submit="pctrl.submit_product(pctrl.spec)">
+                        <div class="pmb-block">
+
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Price</dt>
+                                    <dd>
+                                        <div class="col-xs-3">
+                                            <div class="fg-line">
+                                                <input type="number" class="form-control" placeholder="price" ng-required="true">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="fg-line">
+                                                <select class="form-control">
+                                                    <option>per hour</option>
+                                                    <option>per day</option>
+                                                    <option>per week</option>
+                                                    <option>per month</option>
+                                                    <option>per year</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10" style="height: 95px;">Product's Availability</dt>
+                                    <dd>
+                                        <div class="col-xs-3" style="height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened2 == true }">
+                                                    <span class="input-group-addon"><i class="zmdi zmdi-calendar ma-icon"></i></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened2 == true }">
+                                                        <input ng-click="open($event, 'opened2')" type="text" class="form-control" uib-datepicker-popup="{{format}}" show-weeks="false" ng-model="dtPopup2" is-open="opened2" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Select Date"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group" ng-class="{ 'is-opened': opened == true }">
+                                                    <span class="input-group-addon"></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened == true }">
+                                                        <uib-timepicker ng-model="time" hour-step="1" minute-step="15" datepicker-neutral-timezone></uib-timepicker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-1" style="height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <select class="form-control">
+                                                    <option>GMT</option>
+                                                    <option>UTC</option>
+                                                    <option>PST</option>
+                                                    <option>ETC</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Shipping</dt>
+                                    <dd>
+                                        <div class="col-xs-3">
+                                            <div class="fg-line">
+                                                <select class="form-control" ng-change="pctrl.select_shipping()" ng-model="shipping" placeholder="select">
+                                                    <option value="1">Shipping</option>
+                                                    <option value="2">Pick-up Only</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3" ng-if="pctrl.pickuponly == 1">
+                                            <div class="fg-line">
+                                                <input type="text" class="form-control" placeholder="address" ng-required="true" value="{{ product.address }}"/>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Operating Requirements</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                             <textarea class="form-control" rows="5" placeholder="Requirements"></textarea>
+                                        </div>
+                                        <div class="fg-line" style="margin-top: 10px;">
+                                             <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <span class="btn btn-primary btn-file m-r-10 btn-xs">
+                                                    <span class="fileinput-new">Attach file</span>
+                                                    <span class="fileinput-exists">Change</span>
+                                                    <input type="file" name="...">
+                                                </span>
+                                                <span class="fileinput-filename"></span>
+                                                <a href="#" class="close fileinput-exists" data-dismiss="fileinput">&times;</a>
+                                            </div>
+                                        </div>
+
+                                    </dd>
+                                </dl>
+                            </div>
+
+                             <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Operating Instructions</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                             <textarea class="form-control" rows="5" placeholder="Requirements"></textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            <div class="pmbb-body p-l-30">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Warning</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                             <textarea class="form-control" rows="5" placeholder="Requirements"></textarea>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="p-l-30" style="float: right; margin-right: 30px;">
+                            <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                            <button class="btn btn-link btn-sm" data-ng-click="" >Cancel</button>
+                        </div>
+                            <div style="clear: both;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

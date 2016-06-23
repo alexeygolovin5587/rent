@@ -92,16 +92,22 @@ materialAdmin
                 "id": 10238,
                 "name": "hp computer",
                 "category": "Computer",
+
+                "address": "address1"
             },
             10243: {
                 "id": 10243,
                 "name": "mac computer",
                 "category": "Computer",
+
+                "address": "address2"
             },
             10248: {
                 "id": 10248,
                 "name": "Iphone",
                 "category": "Mobile Device",
+
+                "address": "address3"
             }
         };
     }])

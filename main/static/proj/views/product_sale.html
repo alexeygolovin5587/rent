@@ -1,0 +1,231 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'templates/header.html'" data-ng-controller="headerCtrl as hctrl"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'templates/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+    <section id="content">
+        <div class="container">
+            <div class="block-header">
+                <h2>Sale</h2>
+            </div>
+
+            <!-- TABS -->
+            <div class="card">
+                <div class="card-header">
+                    <h2></h2>
+                </div>
+
+                <div class="card-body card-padding" data-ng-controller="productDetail as pctrl" id="profile-main">
+                    <form class="pmbb-edit" data-ng-submit="pctrl.submit_product(pctrl.spec)">
+                        <div class="pmb-block">
+                            <div class="pmbb-header">
+                                <div class="checkbox m-b-15">
+                                    <label>
+                                        <input type="checkbox" value="" ng-click="pctrl.check_sale($event, 'auction')">
+                                        <i class="input-helper"></i>
+                                        Auction
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pmbb-body p-l-30" ng-show="pctrl.auction == 1">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Minimum Auction Price</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" class="form-control" placeholder="minimum price" ng-required="true">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Maximum Auction Price</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" class="form-control" placeholder="Maximum price" ng-required="true">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Auction Duration</dt>
+                                    <dd>
+                                        <div class="col-xs-5" style="height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened1 == true }">
+                                                    Start Date: &nbsp;&nbsp;<span class="input-group-addon"><i class="zmdi zmdi-calendar ma-icon"></i></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened1 == true }">
+                                                        <input ng-click="open($event, 'opened1')" type="text" class="form-control" uib-datepicker-popup="{{format}}" show-weeks="false" ng-model="dtPopup1" is-open="opened1" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Select Date"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-5" style="margin-left: 30px; height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened2 == true }">
+                                                    End Date: &nbsp;&nbsp;<span class="input-group-addon"><i class="zmdi zmdi-calendar ma-icon"></i></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened2 == true }">
+                                                        <input ng-click="open($event, 'opened2')" type="text" class="form-control" uib-datepicker-popup="{{format}}" show-weeks="false" ng-model="dtPopup2" is-open="opened2" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Select Date"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10" style="cursor: pointer;" ng-click="pctrl.showAddictional()">Additional Price & Duration</dt>
+                                    <dd ng-show="pctrl.additional == 1">
+                                        <div class="fg-line">
+                                            <input type="number" class="form-control" placeholder="price" ng-required="true">
+                                        </div>
+
+
+                                        <div class="col-xs-5" style="height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened4 == true }">
+                                                    Start Date: &nbsp;&nbsp;<span class="input-group-addon"><i class="zmdi zmdi-calendar ma-icon"></i></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened4 == true }">
+                                                        <input ng-click="open($event, 'opened4')" type="text" class="form-control" uib-datepicker-popup="{{format}}" show-weeks="false" ng-model="dtPopup4" is-open="opened1" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Select Date"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-5" style="margin-left: 30px; height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened2 == true }">
+                                                    End Date: &nbsp;&nbsp;<span class="input-group-addon"><i class="zmdi zmdi-calendar ma-icon"></i></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened2 == true }">
+                                                        <input ng-click="open($event, 'opened2')" type="text" class="form-control" uib-datepicker-popup="{{format}}" show-weeks="false" ng-model="dtPopup2" is-open="opened2" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Select Date"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="pmb-block">
+                            <div class="pmbb-header">
+                                <div class="checkbox m-b-15">
+                                    <label>
+                                        <input type="checkbox" value="" ng-click="pctrl.check_sale($event, 'coupon')">
+                                        <i class="input-helper"></i>
+                                        Coupon Price
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pmbb-body p-l-30" ng-show="pctrl.coupon == 1">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Price</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" class="form-control" placeholder="price" ng-required="true">
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Coupon Duration</dt>
+                                    <dd>
+                                        <div class="col-xs-5" style="height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened1 == true }">
+                                                    Start Date: &nbsp;&nbsp;<span class="input-group-addon"><i class="zmdi zmdi-calendar ma-icon"></i></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened1 == true }">
+                                                        <input ng-click="open($event, 'opened1')" type="text" class="form-control" uib-datepicker-popup="{{format}}" show-weeks="false" ng-model="dtPopup1" is-open="opened1" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Select Date"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-5" style="margin-left: 30px; height: 95px; padding: 30px 0;">
+                                            <div class="fg-line">
+                                                <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened2 == true }">
+                                                    End Date: &nbsp;&nbsp;<span class="input-group-addon"><i class="zmdi zmdi-calendar ma-icon"></i></span>
+                                                    <div class="fg-line" ng-class="{ 'fg-toggled': opened2 == true }">
+                                                        <input ng-click="open($event, 'opened2')" type="text" class="form-control" uib-datepicker-popup="{{format}}" show-weeks="false" ng-model="dtPopup2" is-open="opened2" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Select Date"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="pmb-block">
+                            <div class="pmbb-header">
+                                <div class="checkbox m-b-15">
+                                    <label>
+                                        <input type="checkbox" value="" ng-click="pctrl.check_sale($event, 'buy')">
+                                        <i class="input-helper"></i>
+                                        Buy
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pmbb-body p-l-30" ng-show="pctrl.buy == 1">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Buy</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" class="form-control" placeholder="price" ng-required="true">
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="pmb-block">
+                            <div class="pmbb-header">
+                                <div class="checkbox m-b-15">
+                                    <label>
+                                        <input type="checkbox" value="" ng-click="pctrl.check_sale($event, 'shipping')">
+                                        <i class="input-helper"></i>
+                                        Shipping
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pmbb-body p-l-30" ng-show="pctrl.shipping == 1">
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Shipping Option</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <select class="form-control">
+                                                <option>select shippng option</option>
+                                            </select>
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Product Dimensions</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <input type="number" class="form-control" placeholder="price" ng-required="true">
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="dl-horizontal">
+                                    <dt class="p-t-10">Vendor & Services</dt>
+                                    <dd>
+                                        <div class="fg-line">
+                                            <select class="form-control">
+                                                <option>USPS</option>
+                                            </select>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="p-l-30" style="float: right; margin-right: 30px;">
+                            <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                            <button class="btn btn-link btn-sm" data-ng-click="" >Cancel</button>
+                        </div>
+                            <div style="clear: both;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
